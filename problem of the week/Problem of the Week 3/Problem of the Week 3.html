@@ -1,0 +1,179 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "5edfd277-8f73-4ee7-a000-6a10d3c2541f",
+   "metadata": {},
+   "source": [
+    "# Problem of the Week 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "23f44593-daf7-4b70-8b40-2b4c12884893",
+   "metadata": {},
+   "source": [
+    "Name: Ryan Rajaie\n",
+    "\n",
+    "Student ID: 016105024\n",
+    "\n",
+    "Date: 09/07/2025\n",
+    "\n",
+    "**Motivation**\n",
+    "\n",
+    "This week's Problem of the Week is provides a reflection on the models we looked at this week. Here, we will compare and contrast the first linear regression model from Lecture 3-1 with the perceptron model from Lecture 3-2.\n",
+    "\n",
+    "**Completing this assignment**\n",
+    "\n",
+    "To complete this assignment, fill in the markdown cells with your responses. When complete, upload this notebook as a Jupyter notebook AND a PDF to Canvas."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dd59ad35-1320-4c31-87cb-ec7202704606",
+   "metadata": {},
+   "source": [
+    "## Problem 3.1: Model Purpose\n",
+    "\n",
+    "To begin, let's remind ourselves of the purpose for each of our models. Write one sentence outlining the question that each model was designed to answer.  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4879b47e-277d-4201-8cd5-53571895ad9a",
+   "metadata": {},
+   "source": [
+    "Linear Regression Model:\n",
+    "How can we figure out the rate of CO2 increase in the past and predict it in the future using CO2 concentration data over time? \n",
+    "\n",
+    "Perceptron Model:\n",
+    "How can we predict the sex of sea lions using labeled skull and overall length data? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "907fdb91-3bfe-4f2a-aab7-9cb012dabe0d",
+   "metadata": {},
+   "source": [
+    "## Problem 3.2: Model Parameters\n",
+    "\n",
+    "Next, consider how many learnable parameters are used to construct the models. For each model, list the names of the variables that are used to optimize the model to the data. Then, for each model, write one to two sentences describing what the parameters mean in the context of the model."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1d6eef1b-1f45-4b4f-9d4f-90c47a48c4ca",
+   "metadata": {},
+   "source": [
+    "Linear Regression Model:\n",
+    "$w1, w2, b$\n",
+    "\n",
+    "Linear weight $w1$ and quadratic weight $w2$ to account for acceleration of CO2 concentration, and bias $b$ to adjust y-intercept to account for the starting value of CO2 concentration. \n",
+    "\n",
+    "Perceptron Model:$w1, w2, b$\n",
+    "\n",
+    "2 weights and a bias. Each weight represents the degree to which each input ($w2$ skull and $w1$ overall length) and the bias $b$ is a constant that can shift the line in any direction (baseline prediction?). \n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "94423606-326c-4766-8069-fa7c886fb1c7",
+   "metadata": {},
+   "source": [
+    "## Problem 3.3: Model Features\n",
+    "\n",
+    "Features are the independent pieces of information that are provided to a model. For each of the models shown this week, list the features used for the models in one or sentences for each. (Hints: For the perceptron model, there are 2 features. For the linear regression model, there can be 1 or 2 features, depending on how they are counted.)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0c92d46-472a-4772-9e7d-7bea4a85adea",
+   "metadata": {},
+   "source": [
+    "Linear Regression Model:\n",
+    "1. Number of years after 2010\n",
+    "2. CO2 concentration relative to 2010 (ppm)\n",
+    "\n",
+    "Perceptron Model:\n",
+    "1. Skull Length (Condylobasal Length, CBL)\n",
+    "2. Standard Body Length (SL)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d8b79f8e-8ee8-4b48-a1dd-865cbf5e9e8a",
+   "metadata": {},
+   "source": [
+    "## Problem 3.4: Model Target Data\n",
+    "\n",
+    "Target data is the output that a model is trained to predict. For each model, identify/describe the target variable in one sentence."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "55276641-3857-4bd7-9d22-5cdf692db3e5",
+   "metadata": {},
+   "source": [
+    "Linear Regression Model:\n",
+    "CO2 growth rate over time.\n",
+    "\n",
+    "Perceptron Model:\n",
+    "Sex of seal (male vs female).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f5c45cbb-b1b7-4cf9-8823-fe2f255f434c",
+   "metadata": {},
+   "source": [
+    "## Problem 3.5:  Model Cost Function\n",
+    "\n",
+    "The cost function defined for a given model is an essential ingredient to fit the model to data. For each model, list the name and the formula for the cost function used to optimize the model."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a4140778-f170-4d5e-bcdf-659869081473",
+   "metadata": {},
+   "source": [
+    "Linear Regression Model:\n",
+    "\n",
+    "MSE (Mean Squared Error) Formula:\n",
+    "$$\n",
+    "L =\\frac{1}{N} \\sum_{i=1}^N (y_i - \\hat{y}_i)^2\n",
+    "$$\n",
+    "\n",
+    "Perceptron Model:\n",
+    "$$\n",
+    "\\begin{align*}\n",
+    "b &= b + \\eta (c_i -\\hat{c}_i)\\\\\n",
+    "w_1 &= w_1 + \\eta (c_i -\\hat{c}_i)x_{1,i}\\\\\n",
+    "w_2 &= w_2 + \\eta (c_i -\\hat{c}_i)x_{2,i}\\\\\n",
+    "\\end{align*}\n",
+    "$$\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "cs171",
+   "language": "python",
+   "name": "cs171"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
